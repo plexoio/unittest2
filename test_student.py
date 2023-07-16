@@ -1,5 +1,6 @@
 import unittest
-from student import Student, first_name, last_name
+from student import Student, first_name, last_name, student_extension
+from datetime import timedelta
 
 
 class TestStudents(unittest.TestCase):
@@ -34,6 +35,12 @@ class TestStudents(unittest.TestCase):
         self.assertEqual(
             self.student.get_email,
             f'{first_name}.{last_name}@mail.com'.lower())
+
+    def test_apply_extension(self):
+        print('test_apply_extension')
+        old_date = self.student.end_date
+        self.student.apply_extension(student_extension)
+        self.assertNotEqual(self.student.end_date, old_date)
 
 
 if __name__ == "__main__":

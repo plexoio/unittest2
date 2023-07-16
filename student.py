@@ -22,10 +22,23 @@ class Student:
     def alert_santa(self):
         self.naughty_list = True
 
+    def apply_extension(self, student_extension):
+        old_date = self.end_date
+        self.end_date = self.end_date + timedelta(days=student_extension)
+        return f'End: {old_date} || End: {self.end_date}'
 
-first_name = input('Student First Name: ')
-last_name = input('Student Last Name: ')
+
+print('Check In Student\n')
+first_name = input('First Name: ')
+last_name = input('Last Name: ')
+check_extension = input('Student Extension? N/Y: ')
+
+if check_extension.lower() == "y":
+    student_extension = int(input("Introduce days: "))
+else:
+    student_extension = 0
+    print('No changes were made!')
 
 if __name__ == "__main__":
     student = Student(first_name, last_name)
-    print(student.full_name)
+    print(student.full_name, ' | ', student.apply_extension(student_extension))
