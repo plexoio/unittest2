@@ -4,6 +4,7 @@ from student import Student, first_name, last_name
 
 class TestStudents(unittest.TestCase):
 
+    # Before and after all test cases
     @classmethod
     def setUpClass(cls):
         print('OPEN - setUpClass')
@@ -13,12 +14,13 @@ class TestStudents(unittest.TestCase):
     def tearDownClass(cls):
         print('CLOSE - tearDownClass')
 
-    # def setUp(self):
-    #     print('\nOPEN TEST - self.student')
-    #     self.student = Student(first_name, last_name)
+    # Before and after each test case
+    def setUp(self):
+        print('\nOPEN TEST - self.student')
+        self.student = Student(first_name, last_name)
 
-    # def tearDown(self):
-    #     print('CLOSE TEST - self.student')
+    def tearDown(self):
+        print('CLOSE TEST - self.student')
 
     def test_full_name(self):
         print('test_full_name')
